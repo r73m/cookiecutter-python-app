@@ -13,6 +13,9 @@ dependencies = []
 requires = ["uv_build>=0.9.17,<0.10"]
 build-backend = "uv_build"
 
+[tool.uv.build-backend]
+module-name = "{{ cookiecutter.package }}"
+
 [dependency-groups]
 dev = [
     "pytest>=8.4.2",
