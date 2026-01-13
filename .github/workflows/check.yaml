@@ -1,0 +1,34 @@
+name: Check
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+      - '*.md'
+      - .gitignore
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Clone the repo
+        uses: actions/checkout@v6
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: 3.9
+      - name: Check formatting
+        run: make check-format
+      - name: Lint
+        run: make check-lint
+      - name: Check types
+        run: make check-types
+      - name: Run tests
+        run: make test
