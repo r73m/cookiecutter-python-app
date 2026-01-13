@@ -13,8 +13,10 @@ dependencies = []
 requires = ["uv_build>=0.9.17,<0.10"]
 build-backend = "uv_build"
 
+{% if cookiecutter.package != cookiecutter.__default_package %}
 [tool.uv.build-backend]
 module-name = "{{ cookiecutter.package }}"
+{% endif %}
 
 [dependency-groups]
 dev = [
