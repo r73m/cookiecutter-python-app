@@ -32,7 +32,7 @@ check-types:
 
 .PHONY: clean
 clean:
-	rm -rf .coverage .venv dist
+	rm -rf .coverage .pytest_cache .ruff_cache .venv dist
 
 .PHONY: repo
 repo:
