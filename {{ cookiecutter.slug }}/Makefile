@@ -32,7 +32,7 @@ check-types:
 
 .PHONY: clean
 clean:
-	rm -rf .venv dist .coverage
+	rm -rf .coverage .venv dist
 
 .PHONY: repo
 repo:
