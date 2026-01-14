@@ -5,9 +5,13 @@ on:
     paths-ignore:
       - '*.md'
       - .gitignore
+      - .gitattributes
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+defaults:
+  run:
+    working-directory: tests
 jobs:
   check:
     name: Check
@@ -20,11 +24,13 @@ jobs:
         uses: astral-sh/setup-uv@v7
         with:
           enable-cache: true
-          prune-cache: false
+          cache-dependency-glob: uv.lock
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: 3.9
+          python-version-file: .python-version
+      - name: Install dependencies
+        run: uv sync
       - name: Check formatting
         run: make check-format
       - name: Lint
