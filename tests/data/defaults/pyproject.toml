@@ -1,0 +1,45 @@
+[project]
+name = "my-python-app"
+version = "0.0.1"
+description = "My Python application"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+my-python-app = "my_python_app:main"
+
+[build-system]
+requires = ["uv_build>=0.9.17,<0.10"]
+build-backend = "uv_build"
+
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "pytest-mock>=3.15.1",
+    "pytest-random-order>=1.2.0",
+    "ruff>=0.14.11",
+    "ty>=0.0.10",
+]
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+extend-select = [
+    "B", # bugbear
+    "I", # isort
+    "C4", # comprehensions
+    "ERA", # eradicate
+]
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+addopts = [
+    "--durations=5",
+    "--cov=src/my_python_app",
+    "--cov-branch",
+    "--random-order",
+]
