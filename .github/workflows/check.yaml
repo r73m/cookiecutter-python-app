@@ -35,4 +35,4 @@ jobs:
       - name: Check types
         run: make -C tests check-types
       - name: Run tests
-        run: make -C tests test
+        run: make -C tests run
