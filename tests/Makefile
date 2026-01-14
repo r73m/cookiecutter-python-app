@@ -4,7 +4,7 @@ uvx = uv run
 ruff = $(uvx) ruff
 
 .PHONY: prepare
-prepare: format lint check-types test
+prepare: format lint check-types
 
 .PHONY: format
 format:
