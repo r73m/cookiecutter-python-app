@@ -1,0 +1,33 @@
+[project]
+name = "tests"
+version = "0.0.1"
+requires-python = ">=3.9"
+
+dependencies = [
+    "pytest>=8.4.2",
+    "pytest-mock>=3.15.1",
+    "pytest-random-order>=1.2.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.11",
+    "ty>=0.0.10",
+]
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+extend-select = [
+    "B", # bugbear
+    "I", # isort
+    "C4", # comprehensions
+    "ERA", # eradicate
+]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--durations=5",
+    "--random-order",
+]

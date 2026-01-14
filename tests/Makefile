@@ -1,38 +1,38 @@
 .SILENT:
 
-ruff = uvx ruff
-py_files = tests/*.py
+uvx = uv run
+ruff = $(uvx) ruff
 
 .PHONY: prepare
 prepare: format lint check-types test
 
 .PHONY: format
 format:
-	$(ruff) format $(py_files)
+	$(ruff) format
 
 .PHONY: lint
 lint:
-	$(ruff) check --fix $(py_files)
+	$(ruff) check --fix
 
 PHONY: test
 test:
-	tests/main.py
+	$(uvx) pytest
 
 .PHONY: check-format
 check-format:
-	$(ruff) format --check $(py_files)
+	$(ruff) format --check
 
 .PHONY: check-lint
 check-lint:
-	$(ruff) check $(py_files)
+	$(ruff) check
 
 .PHONY: check-types
 check-types:
-	uvx ty check $(py_files)
+	$(uvx) ty check
 
 .PHONY: clean
 clean:
-	rm -rf .DS_Store .ruff_cache
+	rm -rf .DS_Store .pytest_cache .ruff_cache .venv
 
 .PHONY: repo
 repo:
