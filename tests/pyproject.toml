@@ -4,6 +4,7 @@ version = "0.0.1"
 requires-python = ">=3.9"
 
 dependencies = [
+    "cookiecutter>=2.6.0",
     "pytest>=8.4.2",
     "pytest-mock>=3.15.1",
     "pytest-random-order>=1.2.0",
@@ -16,7 +17,8 @@ dev = [
 ]
 
 [tool.ruff]
-line-length = 79
+line-length = 80
+extend-exclude = ["data"]
 
 [tool.ruff.lint]
 extend-select = [
@@ -26,8 +28,12 @@ extend-select = [
     "ERA", # eradicate
 ]
 
+[tool.ty.src]
+exclude = ["data"]
+
 [tool.pytest.ini_options]
 addopts = [
+    "--ignore=data",
     "--durations=5",
     "--random-order",
 ]

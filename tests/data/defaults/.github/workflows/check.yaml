@@ -21,25 +21,18 @@ jobs:
         uses: astral-sh/setup-uv@v7
         with:
           enable-cache: true
-          cache-dependency-glob: tests/uv.lock
+          cache-dependency-glob: uv.lock
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version-file: tests/.python-version
+          python-version-file: .python-version
       - name: Install dependencies
-        run: cd tests && uv sync
+        run: uv sync
       - name: Check formatting
-        run: make -C tests check-format
+        run: make check-format
       - name: Lint
-        run: make -C tests check-lint
+        run: make check-lint
       - name: Check types
-        run: make -C tests check-types
-      - name: Set Git author info
-        run: |
-          git config --global user.name GHA
-          git config --global user.email actions@github.com
+        run: make check-types
       - name: Run tests
-        run: make -C tests run
-        env:
-          GIT_AUTHOR_NAME: GitHub Actions
-          GIT_AUTHOR_EMAIL: actions@github.com
+        run: make test
