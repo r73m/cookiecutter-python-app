@@ -1,7 +1,7 @@
 .SILENT:
 
 ruff = uvx ruff
-py_files = test.py
+py_files = tests/*.py
 
 .PHONY: prepare
 prepare: format lint check-types test
@@ -16,7 +16,7 @@ lint:
 
 PHONY: test
 test:
-	./test.py
+	tests/main.py
 
 .PHONY: check-format
 check-format:
