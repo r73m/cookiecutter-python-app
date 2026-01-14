@@ -37,7 +37,3 @@ clean:
 .PHONY: repo
 repo:
 	gh repo view --web
-
-.PHONY: issues
-issues:
-	gh issue list --web
