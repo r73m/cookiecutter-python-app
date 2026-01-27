@@ -1,7 +1,7 @@
 [project]
 name = "tests"
 version = "0.0.1"
-requires-python = ">=3.9"
+requires-python = ">=3.14"
 
 dependencies = [
     "cookiecutter>=2.6.0",
@@ -13,7 +13,6 @@ dependencies = [
 [dependency-groups]
 dev = [
     "ruff>=0.14.11",
-    "setuptools>=80.10.2",
     "ty>=0.0.10",
 ]
 
