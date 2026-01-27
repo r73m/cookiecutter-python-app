@@ -2,7 +2,7 @@
     "slug": "my-python-app",
     "command": "{{ cookiecutter.slug }}",
     "description": "My Python application",
-    "__default_package": "{{ cookiecutter.slug | replace('-', '_') }}",
+    "__default_package": "{{ cookiecutter.slug | replace('-', '_') | replace('.', '_') | lower }}",
     "package": "{{ cookiecutter.__default_package }}",
     "python": "3.9",
     "line": 79,
