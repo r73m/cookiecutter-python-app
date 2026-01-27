@@ -16,8 +16,8 @@ build-backend = "uv_build"
 {% if cookiecutter.package != cookiecutter.__default_package %}
 [tool.uv.build-backend]
 module-name = "{{ cookiecutter.package }}"
-{% endif %}
 
+{% endif %}
 [dependency-groups]
 dev = [
     "pytest>=8.4.2",
@@ -31,8 +31,8 @@ dev = [
 {% if cookiecutter.line != '88' %}
 [tool.ruff]
 line-length = {{ cookiecutter.line }}
-{% endif %}
 
+{% endif %}
 [tool.ruff.lint]
 extend-select = [
     "B", # bugbear

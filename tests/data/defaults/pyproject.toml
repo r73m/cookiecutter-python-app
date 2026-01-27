@@ -13,7 +13,6 @@ my-python-app = "my_python_app:main"
 requires = ["uv_build>=0.9.17,<0.10"]
 build-backend = "uv_build"
 
-
 [dependency-groups]
 dev = [
     "pytest>=8.4.2",
