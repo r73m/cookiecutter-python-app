@@ -1,15 +1,8 @@
-import tomllib
 from filecmp import dircmp
-from pathlib import Path
 
-from cookiecutter.main import cookiecutter
 from pytest import mark
 
-THIS_FILE = Path(__file__)
-THIS_DIR = THIS_FILE.parent
-DATA_DIR = THIS_DIR / "data"
-TEMPLATE = str(THIS_DIR.parent)  # must be `str`
-DEFAULT_SLUG = "my-python-app"
+from common import DATA_DIR, DEFAULT_SLUG, generate_project, load_project_meta
 
 
 def test_everything(tmp_path):
@@ -87,28 +80,3 @@ def test_command_name(tmp_path, slug, command, expected):
 
     actual_command = next(iter(scripts))
     assert actual_command == expected
-
-
-def generate_project(output_dir, **context):
-    if context:
-        context = {k: v for k, v in context.items() if v is not None}
-
-    cookiecutter(
-        template=TEMPLATE,
-        no_input=True,
-        extra_context=context or None,
-        output_dir=output_dir,
-    )
-
-    slug = context.get("slug", DEFAULT_SLUG)
-    return output_dir / slug
-
-
-def load_project_meta(project_dir):
-    meta_path = project_dir / "pyproject.toml"
-    return load_toml(meta_path)
-
-
-def load_toml(path):
-    with open(path, "rb") as file:
-        return tomllib.load(file)
