@@ -5,6 +5,7 @@ requires-python = ">=3.14"
 
 dependencies = [
     "cookiecutter>=2.6.0",
+    "gitpython>=3.1.46",
     "pytest>=8.4.2",
     "pytest-mock>=3.15.1",
     "pytest-random-order>=1.2.0",
