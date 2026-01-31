@@ -30,6 +30,10 @@ check-lint:
 check-types:
 	$(uvx) ty check
 
+.PHONY: sync
+sync:
+	uv sync
+
 .PHONY: clean
 clean:
 	rm -rf .DS_Store .coverage .pytest_cache .ruff_cache .venv dist

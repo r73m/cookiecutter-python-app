@@ -27,7 +27,7 @@ jobs:
         with:
           python-version-file: tests/.python-version
       - name: Install dependencies
-        run: cd tests && uv sync
+        run: make -C tests sync
       - name: Check formatting
         run: make -C tests check-format
       - name: Lint
