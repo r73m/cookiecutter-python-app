@@ -7,7 +7,7 @@ requires-python = ">=3.9"
 dependencies = []
 
 [project.scripts]
-my-python-app = "my_python_app:main"
+my-python-app = "my_python_app.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.9.17,<0.10"]

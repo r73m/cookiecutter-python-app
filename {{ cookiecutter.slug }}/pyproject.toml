@@ -7,7 +7,7 @@ requires-python = ">={{ cookiecutter.python }}"
 dependencies = []
 
 [project.scripts]
-{{ cookiecutter.command }} = "{{ cookiecutter.package }}:main"
+{{ cookiecutter.command }} = "{{ cookiecutter.package }}.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.9.17,<0.10"]
