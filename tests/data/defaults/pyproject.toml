@@ -16,12 +16,12 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "pytest>=8.4.2",
-    "pytest-cov>=7.0.0",
+    "pytest-cov>=7.1.0",
     "pytest-mock>=3.15.1",
     "pytest-random-order>=1.2.0",
-    "ruff>=0.14.14",
-    "setuptools>=80.10.2",
-    "ty>=0.0.13",
+    "ruff>=0.15.8",
+    "setuptools>=82.0.1",
+    "ty>=0.0.26",
 ]
 
 [tool.ruff]
