@@ -35,3 +35,11 @@ def load_project_meta(project_dir):
 def load_toml(path):
     with open(path, "rb") as file:
         return tomllib.load(file)
+
+
+def assert_equal(root_diff):
+    assert not root_diff.left_only, f"Unexpected {root_diff.left_only}"
+    assert not root_diff.right_only, f"Missing {root_diff.right_only}"
+    assert not root_diff.diff_files, f"Different {root_diff.diff_files}"
+    for subdir_diff in root_diff.subdirs.values():
+        assert_equal(subdir_diff)
