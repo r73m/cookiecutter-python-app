@@ -2,7 +2,13 @@ from filecmp import dircmp
 
 from pytest import mark
 
-from common import DATA_DIR, DEFAULT_SLUG, generate_project, load_project_meta
+from common import (
+    DATA_DIR,
+    DEFAULT_SLUG,
+    assert_equal,
+    generate_project,
+    load_project_meta,
+)
 
 
 def test_everything(tmp_path):
@@ -14,9 +20,7 @@ def test_everything(tmp_path):
 
     # then
     difference = dircmp(actual_dir, expected_dir, ignore=[".git", "uv.lock"])
-    assert not difference.left_only, f"Extra files {difference.left_only}"
-    assert not difference.right_only, f"Missing files {difference.right_only}"
-    assert not difference.diff_files, f"Different files {difference.diff_files}"
+    assert_equal(difference)
 
     git_dir = actual_dir / ".git"
     assert git_dir.is_dir(), "Not a Git repo"
