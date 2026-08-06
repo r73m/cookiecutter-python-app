@@ -14,7 +14,7 @@ format:
 lint:
 	$(ruff) check --fix
 
-PHONY: run
+.PHONY: run
 run:
 	$(uvx) pytest
 
