@@ -38,6 +38,10 @@ sync:
 clean:
 	rm -rf .DS_Store .coverage .pytest_cache .ruff_cache .venv dist
 
+.PHONY: pr
+pr:
+	gh pr new --web
+
 .PHONY: repo
 repo:
 	gh repo view --web
