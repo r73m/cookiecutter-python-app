@@ -10,7 +10,7 @@ dependencies = []
 {{ cookiecutter.command }} = "{{ cookiecutter.package }}.cli:main"
 
 [build-system]
-requires = ["uv_build>=0.9.17,<0.10"]
+requires = ["uv_build>=0.12.3,<0.13"]
 build-backend = "uv_build"
 
 {% if cookiecutter.package != cookiecutter.__default_package %}
